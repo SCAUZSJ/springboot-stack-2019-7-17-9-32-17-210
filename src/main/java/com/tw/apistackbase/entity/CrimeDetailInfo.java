@@ -9,9 +9,9 @@ public class CrimeDetailInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long crimeDetailId;
-
+    @Column(nullable = false)
     private String subInfoDes;
-
+    @Column(nullable = false)
     private String objInfoDes;
 
     public CrimeDetailInfo(){}

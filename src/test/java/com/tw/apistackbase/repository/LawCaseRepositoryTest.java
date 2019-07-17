@@ -141,6 +141,7 @@ public class LawCaseRepositoryTest {
         LawCase lawCase1 = lawCaseRepository.saveAndFlush(lawCase);
         //then
         Assertions.assertEquals("刑事法院", lawCase1.getCourt().getName());
-
     }
+
+
 }

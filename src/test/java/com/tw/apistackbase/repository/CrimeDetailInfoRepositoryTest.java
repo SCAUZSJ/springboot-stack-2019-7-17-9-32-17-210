@@ -25,5 +25,15 @@ public class CrimeDetailInfoRepositoryTest {
         //then
         Assertions.assertEquals("主观bbb", crimeDetailInfo.getSubInfoDes());
     }
+    @Test
+    public void test_should_return_exception_when_property_is_null() {
+        //given
+        CrimeDetailInfo crimeDetailInfo = new CrimeDetailInfo();
+        //when
+        //then
+        Assertions.assertThrows(RuntimeException.class,()->{
+            crimeDetailInfoRepository.saveAndFlush(crimeDetailInfo);
+        });
+    }
 
 }
