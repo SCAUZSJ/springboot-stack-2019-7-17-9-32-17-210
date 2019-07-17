@@ -1,5 +1,6 @@
 package com.tw.apistackbase.repository;
 
+import com.tw.apistackbase.entity.Court;
 import com.tw.apistackbase.entity.CrimeDetailInfo;
 import com.tw.apistackbase.entity.LawCase;
 import org.junit.jupiter.api.Assertions;
@@ -92,15 +93,15 @@ public class LawCaseRepositoryTest {
     }
 
     @Test
-    public void test_should_return_lawCase_with_detailInfo_when_find_by_id() {
+    public void test_should_return_lawCase_with_court_when_find_by_id() {
         //given
         LawCase lawCase = new LawCase("行窃",new Timestamp(System.currentTimeMillis()));
-        lawCase.setCrimeDetailInfo(new CrimeDetailInfo("主观","客观"));
+        lawCase.setCourt(new Court("法院A"));
         Long id =lawCaseRepository.saveAndFlush(lawCase).getCaseId();
         //when
         LawCase lawCase2 = lawCaseRepository.findById(id).get();
         //then
-        Assertions.assertEquals("客观", lawCase2.getCrimeDetailInfo().getObjInfoDes());
+        Assertions.assertEquals("法院A", lawCase2.getCourt().getName());
 
     }
 }

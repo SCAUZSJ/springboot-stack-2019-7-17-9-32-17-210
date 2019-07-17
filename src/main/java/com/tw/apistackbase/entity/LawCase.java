@@ -19,6 +19,9 @@ public class LawCase {
     @OneToOne(cascade = CascadeType.ALL)
     private CrimeDetailInfo crimeDetailInfo;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    private Court court;
+
     public LawCase(){}
 
     public LawCase(String name, Timestamp happenTime) {
@@ -56,5 +59,13 @@ public class LawCase {
 
     public void setCrimeDetailInfo(CrimeDetailInfo crimeDetailInfo) {
         this.crimeDetailInfo = crimeDetailInfo;
+    }
+
+    public Court getCourt() {
+        return court;
+    }
+
+    public void setCourt(Court court) {
+        this.court = court;
     }
 }
