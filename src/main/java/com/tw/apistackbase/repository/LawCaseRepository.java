@@ -9,5 +9,6 @@ public interface LawCaseRepository extends JpaRepository<LawCase, Long> {
 
     LawCase findByName(String name);
     List<LawCase>  findLawCasesByName(String name);
+    List<LawCase> findByOrderByHappenTimeDesc();
 
 }

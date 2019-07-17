@@ -78,4 +78,16 @@ public class LawCaseRepositoryTest {
         Assertions.assertEquals(2, lawCases.size());
 
     }
+    @Test
+    public void test_should_return_lawCases_when_find_all_order_by_desc() {
+        //given
+        lawCaseRepository.saveAndFlush(new LawCase("行窃",new Timestamp(System.currentTimeMillis()-10000)));
+        lawCaseRepository.saveAndFlush(new LawCase("赌博",new Timestamp(System.currentTimeMillis()-200000)));
+        lawCaseRepository.saveAndFlush(new LawCase("飙车",new Timestamp(System.currentTimeMillis())));
+        //when
+        List<LawCase> lawCases = lawCaseRepository.findByOrderByHappenTimeDesc();
+        //then
+        Assertions.assertEquals("飙车", lawCases.get(0).getName());
+
+    }
 }
