@@ -13,6 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
@@ -39,6 +40,18 @@ public class LawCaseRepositoryTest {
         LawCase lawCase = lawCaseRepository.findByName("行窃");
         //then
         Assertions.assertEquals("行窃", lawCase.getName());
+
+    }
+
+    @Test
+    public void test_should_return_lawCases_when_find_all() {
+        //given
+        lawCaseRepository.saveAndFlush(new LawCase("行窃",new Timestamp(System.currentTimeMillis())));
+        lawCaseRepository.saveAndFlush(new LawCase("赌博",new Timestamp(System.currentTimeMillis())));
+        //when
+        List<LawCase> lawCases = lawCaseRepository.findAll();
+        //then
+        Assertions.assertEquals(2, lawCases.size());
 
     }
 }
