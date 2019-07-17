@@ -15,6 +15,7 @@ public class ProcuratorRepositoryTest {
     @Autowired
     private ProcuratorRepository procuratorRepository;
 
+
     @Test
     public void test_should_return_procurator_when_find_by_id() {
         //given
@@ -23,6 +24,16 @@ public class ProcuratorRepositoryTest {
         Procurator procurator = procuratorRepository.findById(id).get();
         //then
         Assertions.assertEquals("检察官", procurator.getName());
+    }
+    @Test
+    public void test_should_return_exception_when_property_is_null() {
+        //given
+        Procurator procurator = new Procurator();
+        //when
+        //then
+        Assertions.assertThrows(RuntimeException.class,()->{
+            procuratorRepository.saveAndFlush(procurator);
+        });
     }
 
 }
