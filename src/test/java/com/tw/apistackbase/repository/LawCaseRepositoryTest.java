@@ -105,18 +105,18 @@ public class LawCaseRepositoryTest {
         Assertions.assertEquals("客观", lawCase2.getCrimeDetailInfo().getObjInfoDes());
 
     }
-    @Test
-    public void test_should_return_lawCase_with_detailInfo_when_update() {
-        //given
-        LawCase lawCase = new LawCase("刑事",new Timestamp(System.currentTimeMillis()));
-        lawCase = lawCaseRepository.saveAndFlush(lawCase);
-        //when
-        lawCase.setCrimeDetailInfo(new CrimeDetailInfo("主观_刑事","客观_刑事"));
-        LawCase lawCase1 = lawCaseRepository.saveAndFlush(lawCase);
-        //then
-        Assertions.assertEquals("客观_刑事", lawCase1.getCrimeDetailInfo().getObjInfoDes());
+        @Test
+        public void test_should_return_lawCase_with_detailInfo_when_update() {
+            //given
+            LawCase lawCase = new LawCase("刑事",new Timestamp(System.currentTimeMillis()));
+            lawCase = lawCaseRepository.saveAndFlush(lawCase);
+            //when
+            lawCase.setCrimeDetailInfo(new CrimeDetailInfo("主观_刑事","客观_刑事"));
+            LawCase lawCase1 = lawCaseRepository.saveAndFlush(lawCase);
+            //then
+            Assertions.assertEquals("客观_刑事", lawCase1.getCrimeDetailInfo().getObjInfoDes());
 
-    }
+        }
 
 
     @Test
@@ -129,6 +129,18 @@ public class LawCaseRepositoryTest {
         LawCase lawCase2 = lawCaseRepository.findById(id).get();
         //then
         Assertions.assertEquals("法院A", lawCase2.getCourt().getName());
+
+    }
+    @Test
+    public void test_should_return_lawCase_with_court_when_update() {
+        //given
+        LawCase lawCase = new LawCase("刑事",new Timestamp(System.currentTimeMillis()));
+        lawCase = lawCaseRepository.saveAndFlush(lawCase);
+        //when
+        lawCase.setCourt(new Court("刑事法院"));
+        LawCase lawCase1 = lawCaseRepository.saveAndFlush(lawCase);
+        //then
+        Assertions.assertEquals("刑事法院", lawCase1.getCourt().getName());
 
     }
 }
