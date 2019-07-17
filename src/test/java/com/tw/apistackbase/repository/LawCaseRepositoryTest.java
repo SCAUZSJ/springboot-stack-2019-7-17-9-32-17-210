@@ -54,4 +54,16 @@ public class LawCaseRepositoryTest {
         Assertions.assertEquals(2, lawCases.size());
 
     }
+    @Test
+    public void test_should_return__when_delete_by_id() {
+        //given
+        Long id = lawCaseRepository.saveAndFlush(new LawCase("行窃",new Timestamp(System.currentTimeMillis()))).getCaseId();
+        lawCaseRepository.saveAndFlush(new LawCase("赌博",new Timestamp(System.currentTimeMillis())));
+        //when
+        lawCaseRepository.deleteById(id);
+        List<LawCase> lawCases = lawCaseRepository.findAll();
+        //then
+        Assertions.assertEquals(1, lawCases.size());
+
+    }
 }
