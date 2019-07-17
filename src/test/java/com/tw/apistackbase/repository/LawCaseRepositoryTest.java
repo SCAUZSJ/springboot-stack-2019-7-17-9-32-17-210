@@ -25,10 +25,18 @@ public class LawCaseRepositoryTest {
     public void test_should_return_lawCase_when_find_by_id() {
         //given
          Long id =lawCaseRepository.saveAndFlush(new LawCase("行窃",new Timestamp(System.currentTimeMillis()))).getCaseId();
-
         //when
         LawCase lawCase = lawCaseRepository.findById(id).get();
+        //then
+        Assertions.assertEquals("行窃", lawCase.getName());
 
+    }
+    @Test
+    public void test_should_return_lawCase_when_find_by_name() {
+        //given
+        lawCaseRepository.saveAndFlush(new LawCase("行窃",new Timestamp(System.currentTimeMillis())));
+        //when
+        LawCase lawCase = lawCaseRepository.findByName("行窃");
         //then
         Assertions.assertEquals("行窃", lawCase.getName());
 
