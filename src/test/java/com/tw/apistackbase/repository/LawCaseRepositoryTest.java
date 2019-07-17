@@ -66,4 +66,16 @@ public class LawCaseRepositoryTest {
         Assertions.assertEquals(1, lawCases.size());
 
     }
+    @Test
+    public void test_should_return_lawCases_when_find_all_by_name() {
+        //given
+        lawCaseRepository.saveAndFlush(new LawCase("行窃",new Timestamp(System.currentTimeMillis())));
+        lawCaseRepository.saveAndFlush(new LawCase("赌博",new Timestamp(System.currentTimeMillis())));
+        lawCaseRepository.saveAndFlush(new LawCase("赌博",new Timestamp(System.currentTimeMillis())));
+        //when
+        List<LawCase> lawCases = lawCaseRepository.findLawCasesByName("赌博");
+        //then
+        Assertions.assertEquals(2, lawCases.size());
+
+    }
 }
