@@ -24,6 +24,6 @@ public class CrimeDetailInfoRepositoryTest {
         CrimeDetailInfo crimeDetailInfo = crimeDetailInfoRepository.findById(id).get();
         //then
         Assertions.assertEquals("主观bbb", crimeDetailInfo.getSubInfoDes());
-
     }
+
 }
