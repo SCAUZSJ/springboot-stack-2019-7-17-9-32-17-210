@@ -9,7 +9,7 @@ public class Court {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long courtId;
-    @Column(length = 50)
+    @Column(length = 50,nullable = false)
     private String name;
 
     public Court(){}

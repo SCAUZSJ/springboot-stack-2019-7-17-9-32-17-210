@@ -24,4 +24,14 @@ public class CourtRepositoryTest {
         //then
         Assertions.assertEquals("第一法院", court.getName());
     }
+    @Test
+    public void test_should_return_exception_when_property_is_null() {
+        //given
+        Court court = new Court();
+        //when
+        //then
+        Assertions.assertThrows(RuntimeException.class,()->{
+            courtRepository.saveAndFlush(court);
+        });
+    }
 }
