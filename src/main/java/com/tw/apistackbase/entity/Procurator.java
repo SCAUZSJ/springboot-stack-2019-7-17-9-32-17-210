@@ -9,8 +9,13 @@ public class Procurator {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long procuratorId;
+
     @Column(length = 255,nullable = false)
     private String name;
+
+    @Column(name="court_id",nullable = true)
+    private String courtId;
+
 
     public Procurator(){}
     public Procurator(String name) {
